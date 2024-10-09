@@ -1,0 +1,38 @@
+services:
+  postgres:
+    container_name: postgres-sql-bb
+    image: postgres
+    environment:
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD : postgres
+      PG_DATA : var/lib/postgres/data
+      POSTGRES_DB : book-bouqet
+
+    volumes:
+      - postgres:/postgres/data
+    ports :
+      - 5432:5432
+    networks:
+      - spring-demo
+    restart: unless-stopped
+  mail-dev :
+    container_name: mail-dev-bb
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+networks:
+  spring-demo :
+    driver: bridge
+
+volumes:
+  postgres :
+    driver: local
+
+
+
+
+
+
+
