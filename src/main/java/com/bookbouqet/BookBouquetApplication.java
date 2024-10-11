@@ -12,13 +12,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableAsync
-public class BookbouqetApplication {
+public class BookBouquetApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(BookbouqetApplication.class, args);
+        SpringApplication.run(BookBouquetApplication.class, args);
     }
 
 

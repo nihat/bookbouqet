@@ -1,5 +1,7 @@
 package com.bookbouqet.user;
 
+import com.bookbouqet.book.book.Book;
+import com.bookbouqet.book.history.BookTransactionHistory;
 import com.bookbouqet.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -48,6 +50,11 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> bookTransactionHistories;
 
     @Override
     public String getName() {
