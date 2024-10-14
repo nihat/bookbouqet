@@ -1,5 +1,6 @@
 package com.bookbouqet.handler;
 
+import com.bookbouqet.book.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -72,6 +73,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(ExceptionResponse.builder()
                         .businessErrorMessage("Internal Server Error , please contact to site administrator")
+                        .error(exc.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(OperationNotPermittedException.class)
+    public ResponseEntity<ExceptionResponse> handleException(OperationNotPermittedException exc) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ExceptionResponse.builder()
                         .error(exc.getMessage())
                         .build());
     }

@@ -4,15 +4,13 @@ import com.bookbouqet.book.feedback.FeedBack;
 import com.bookbouqet.book.history.BookTransactionHistory;
 import com.bookbouqet.entity.BaseEntity;
 import com.bookbouqet.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -41,6 +39,16 @@ public class Book extends BaseEntity {
 
     @OneToMany(mappedBy = "book")
     private List<BookTransactionHistory> bookTransactionHistories;
+
+
+    @Transient
+    public double getRate(){
+        double rate = 0.0;
+        if(!CollectionUtils.isEmpty(feedBacks)){
+            rate = feedBacks.stream().mapToDouble(FeedBack::getNote).average().orElse(0.0);
+        }
+        return Math.round(rate * 10.0) / 10.0;
+    }
 
 
 }

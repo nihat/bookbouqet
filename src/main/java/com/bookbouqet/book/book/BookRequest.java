@@ -1,17 +1,20 @@
 package com.bookbouqet.book.book;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
 
-@Getter
-@Setter
 public record BookRequest(
+
+        @NotBlank(message = "100")
         String title,
+        @NotBlank(message = "101")
         String author,
+        @NotBlank(message = "102")
         String isbn,
+        @NotBlank(message = "103")
         String synopsis,
-        String bookCover
+        @NotBlank(message = "104")
+        String bookCover,
+        boolean shareable
 ) {
 
 

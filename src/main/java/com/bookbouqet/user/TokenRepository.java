@@ -1,9 +1,9 @@
 package com.bookbouqet.user;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface TokenRepository extends CrudRepository<Token, Integer> {
+public interface TokenRepository extends JpaRepository<Token, Integer> {
    Optional<Token> findByToken(String token);
 }
