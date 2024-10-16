@@ -13,17 +13,17 @@ public interface BookTransactionHistoryRepository extends JpaRepository<BookTran
     Page<BookTransactionHistory> findAllBorrowedBooks(Pageable pageable, Integer userId);
 
     @Query("SELECT history from BookTransactionHistory  history where history.book.owner.id = :userId and history.returned = true")
-    Page<BookTransactionHistory> findAllReturnedBooks(Pageable pageable, Integer id);
+    Page<BookTransactionHistory> findAllReturnedBooks(Pageable pageable, Integer userId);
 
     @Query("SELECT COUNT(*) AS isAlreadyBorrowed FROM BookTransactionHistory history " +
             " WHERE history.book.id =:bookId AND  history.returnApproved = false ")
-    boolean isAlreadyBorrowed(Integer bookId, Integer userId);
+    boolean isAlreadyBorrowed(Integer bookId);
 
-    @Query("SELECT history FROM BookTransactionHistory history WHERE history.book.id = :bokId " +
+    @Query("SELECT history FROM BookTransactionHistory history WHERE history.book.id = :bookId " +
             "AND history.user.id != :userId  AND history.returned = false AND history.returnApproved = false ")
     Optional<BookTransactionHistory> findByBookId(Integer bookId,Integer userId);
 
-    @Query("SELECT history FROM BookTransactionHistory history WHERE history.book.id = :bokId " +
+    @Query("SELECT history FROM BookTransactionHistory history WHERE history.book.id = :bookId " +
             "AND history.book.owner.id = :userId  AND history.returned = true AND history.returnApproved = false ")
     Optional<BookTransactionHistory> findBorrowedBookByOwnerId(Integer bookId, Integer userId);
 }

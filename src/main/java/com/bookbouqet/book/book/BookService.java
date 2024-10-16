@@ -146,7 +146,7 @@ public class BookService {
         if (!book.isShareable() || book.isArchived()) {
             throw new OperationNotPermittedException("You cannot borrow the book since book is not shareable or archived !");
         }
-        boolean isAlreadyBorrowed = bookTransactionHistoryRepository.isAlreadyBorrowed(bookId, user.getId());
+        boolean isAlreadyBorrowed = bookTransactionHistoryRepository.isAlreadyBorrowed(bookId);
         if (isAlreadyBorrowed) {
             throw new OperationNotPermittedException("Requested book is already borrowed !");
         }

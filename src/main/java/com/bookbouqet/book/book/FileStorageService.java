@@ -46,10 +46,11 @@ public class FileStorageService {
                 Files.write(targetPath, sourceFile.getBytes());
                 log.info("Successfully uploaded " + sourceFile.getOriginalFilename() + " to " + targetFilePath);
             } catch (IOException e) {
-               log.error("Could not write file " + targetFilePath);
+                log.error("Could not write file " + targetFilePath);
             }
             return targetFilePath;
         }
+        return null;
     }
 
     private String getFileExtension(MultipartFile sourceFile) {
