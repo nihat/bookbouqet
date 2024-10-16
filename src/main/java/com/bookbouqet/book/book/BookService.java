@@ -3,6 +3,7 @@ package com.bookbouqet.book.book;
 import com.bookbouqet.book.BookMapper;
 import com.bookbouqet.book.exception.OperationNotPermittedException;
 import com.bookbouqet.book.history.BookTransactionHistory;
+import com.bookbouqet.book.history.BookTransactionHistoryMapper;
 import com.bookbouqet.book.history.BookTransactionHistoryRepository;
 import com.bookbouqet.user.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -150,14 +151,7 @@ public class BookService {
             throw new OperationNotPermittedException("Requested book is already borrowed !");
         }
 
-        BookTransactionHistory bookTransactionHistory = BookTransactionHistory.builder()
-                .book(book)
-                .lastModifiedBy(user.getId())
-                .lastModifiedDate(LocalDate.now())
-                .returned(false)
-                .returnApproved(false)
-                .user(user)
-                .build();
+        BookTransactionHistory bookTransactionHistory = BookTransactionHistoryMapper.toBookTransaction(book, user);
         transactionHistoryRepository.save(bookTransactionHistory);
 
         book.setShareable(false);
