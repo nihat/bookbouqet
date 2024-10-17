@@ -26,18 +26,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-private final UserRepository userRepository;
-private final RoleRepository roleRepository;
-private final PasswordEncoder passwordEncoder;
-private final TokenRepository tokenRepository;
-private final EmailService emailService;
-private final AuthenticationManager authenticationManager;
-private final JWTService jwtService;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenRepository tokenRepository;
+    private final EmailService emailService;
+    private final AuthenticationManager authenticationManager;
+    private final JWTService jwtService;
 
-@Value("${application.mailing.frontend.activation-url}")
-private String activationURL;
+    @Value("${application.mailing.frontend.activation-url}")
+    private String activationURL;
 
-@Transactional
+    @Transactional
     public void register(RegistrationRequest registrationRequest) throws MessagingException {
 
         var userRole = roleRepository.findByName("USER").orElseThrow(
@@ -67,7 +67,7 @@ private String activationURL;
                 activationURL,
                 newToken,
                 "Account Activation"
-                );
+        );
     }
 
     public String generateAndSaveActivationToken(User user) {
@@ -96,10 +96,10 @@ private String activationURL;
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        var claims = new HashMap<String ,Object>();
+        var claims = new HashMap<String, Object>();
         User user = (User) auth.getPrincipal();
         claims.put("fullName", user.fullName());
-        var jwtToken = jwtService.generateToken(claims,user);
+        var jwtToken = jwtService.generateToken(claims, user);
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
@@ -107,7 +107,7 @@ private String activationURL;
     @Transactional
     public void activateAccount(String token) throws MessagingException {
         var savedToken = tokenRepository.findByToken(token).orElseThrow(() -> new RuntimeException("Token Not Found"));
-        if(LocalDateTime.now().isAfter(savedToken.getExpiresAt())){
+        if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
             sendValidationEmail(savedToken.getUser());
             throw new RuntimeException("Token Expired , a fresh token is sent to same email address");
         }

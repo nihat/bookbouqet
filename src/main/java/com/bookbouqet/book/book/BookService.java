@@ -7,7 +7,7 @@ import com.bookbouqet.book.history.BookTransactionHistoryMapper;
 import com.bookbouqet.book.history.BookTransactionHistoryRepository;
 import com.bookbouqet.user.User;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BookService {
 
     private final BookRepository bookRepository;

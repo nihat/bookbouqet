@@ -8,12 +8,12 @@
         <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bookbouqet</groupId>
+    <groupId>com.bookbouquet</groupId>
     <artifactId>book-bouqet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>bookbouqet</name>
-    <description>bookbouqet</description>
+    <name>book-bouquet</name>
+    <description>book-bouquet</description>
     <url/>
     <licenses>
         <license/>
