@@ -37,7 +37,6 @@ public class AuthenticationService {
     @Value("${application.mailing.frontend.activation-url}")
     private String activationURL;
 
-    @Transactional
     public void register(RegistrationRequest registrationRequest) throws MessagingException {
 
         var userRole = roleRepository.findByName("USER").orElseThrow(
