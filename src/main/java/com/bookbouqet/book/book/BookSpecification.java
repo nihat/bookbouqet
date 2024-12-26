@@ -1,5 +1,6 @@
 package com.bookbouqet.book.book;
 
+import com.bookbouqet.entity.Book;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BookSpecification {

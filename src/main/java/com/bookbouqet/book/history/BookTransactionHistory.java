@@ -1,8 +1,8 @@
 package com.bookbouqet.book.history;
 
-import com.bookbouqet.book.book.Book;
+import com.bookbouqet.entity.Book;
 import com.bookbouqet.entity.BaseEntity;
-import com.bookbouqet.user.User;
+import com.bookbouqet.entity.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

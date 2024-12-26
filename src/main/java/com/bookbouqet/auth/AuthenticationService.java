@@ -1,13 +1,13 @@
 package com.bookbouqet.auth;
 
-import com.bookbouqet.email.EmailService;
-import com.bookbouqet.email.EmailTemplateName;
-import com.bookbouqet.role.RoleRepository;
-import com.bookbouqet.security.JWTService;
-import com.bookbouqet.user.Token;
-import com.bookbouqet.user.TokenRepository;
-import com.bookbouqet.user.User;
-import com.bookbouqet.user.UserRepository;
+import com.bookbouqet.service.EmailService;
+import com.bookbouqet.enumaration.EmailTemplateName;
+import com.bookbouqet.repository.RoleRepository;
+import com.bookbouqet.service.JWTService;
+import com.bookbouqet.entity.Token;
+import com.bookbouqet.repository.TokenRepository;
+import com.bookbouqet.entity.User;
+import com.bookbouqet.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

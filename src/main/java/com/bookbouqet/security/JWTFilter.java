@@ -1,5 +1,6 @@
 package com.bookbouqet.security;
 
+import com.bookbouqet.service.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
 package com.bookbouqet.book.history;
 
-import com.bookbouqet.book.book.Book;
-import com.bookbouqet.user.User;
+import com.bookbouqet.entity.Book;
+import com.bookbouqet.entity.User;
 
 import java.time.LocalDate;
 

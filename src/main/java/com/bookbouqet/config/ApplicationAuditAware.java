@@ -1,6 +1,6 @@
 package com.bookbouqet.config;
 
-import com.bookbouqet.user.User;
+import com.bookbouqet.entity.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
